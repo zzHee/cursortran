@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unicode 转换器</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="tool-container card">
+        <h1>Unicode 转换器</h1>
+        <div class="input-group">
+            <h3>Unicode 编码</h3>
+            <textarea id="unicodeInput" placeholder="请输入 Unicode 编码（例如：\u7528\u6327）"></textarea>
+        </div>
+        <div class="input-group">
+            <button onclick="convertUnicode()">转换</button>
+        </div>
+        <div class="input-group">
+            <h3>转换结果</h3>
+            <textarea id="result" readonly></textarea>
+        </div>
+        
+        <div style="margin-top: 20px;">
+            <a href="../index.html" style="color: var(--primary-color);">返回工具列表</a>
+        </div>
+    </div>
+
+    <script>
+        function convertUnicode() {
+            const input = document.getElementById('unicodeInput').value;
+            try {
+                const result = input.replace(/\\u([0-9a-fA-F]{4})/g, (match, group1) => {
+                    return String.fromCharCode(parseInt(group1, 16));
+                });
+                document.getElementById('result').value = result;
+            } catch (error) {
+                document.getElementById('result').value = '转换出错：' + error.message;
+            }
+        }
+    </script>
+</body>
+</html> 
