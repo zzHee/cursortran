@@ -8,6 +8,13 @@ const toolsConfig = {
         category: "converter"
     },
     // AI引擎链接
+    "torchv-kb": {
+        title: "TorchV KB",
+        description: "TorchV 知识库系统，提供智能知识管理和检索服务",
+        type: "external",
+        url: "https://kb.torchv.com/",
+        category: "ai"
+    },
     "volcano-ark": {
         title: "火山方舟引擎",
         description: "火山引擎提供的人工智能大模型引擎，基于方舟架构",
