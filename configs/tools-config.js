@@ -8,6 +8,13 @@ const toolsConfig = {
         category: "converter"
     },
     // AI引擎链接
+    "auto-coder": {
+        title: "Auto-Coder.Chat",
+        description: "AI驱动的交互式编程助手，支持Python 3.10-3.12版本",
+        type: "external",
+        url: "https://auto-coder.chat/en",
+        category: "coding"
+    },
     "torchv-kb": {
         title: "TorchV KB",
         description: "TorchV 知识库系统，提供智能知识管理和检索服务",
