@@ -1,0 +1,29 @@
+<?xml version="1.0" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg t="1743581481331" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1646" xmlns:xlink="http://www.w3.org/1999/xlink" width="200" height="200">
+  <path d="M0.0512 512a512 512 0 1 0 512-512 512 512 0 0 0-512 512z m801.6384 289.6384a409.6 409.6 0 1 1 0-579.328 409.6 409.6 0 0 1 0 579.328z" fill="#4CAF50" p-id="1647"></path>
+  <path d="M256 256 L256 768 L768 768 L768 256 L256 256 Z" fill="none" stroke="#4CAF50" stroke-width="20" p-id="1648"></path>
+  <path d="M356 256 L356 768" fill="none" stroke="#4CAF50" stroke-width="10" p-id="1649"></path>
+  <path d="M456 256 L456 768" fill="none" stroke="#4CAF50" stroke-width="10" p-id="1650"></path>
+  <path d="M556 256 L556 768" fill="none" stroke="#4CAF50" stroke-width="10" p-id="1651"></path>
+  <path d="M656 256 L656 768" fill="none" stroke="#4CAF50" stroke-width="10" p-id="1652"></path>
+  <path d="M256 356 L768 356" fill="none" stroke="#4CAF50" stroke-width="10" p-id="1653"></path>
+  <path d="M256 456 L768 456" fill="none" stroke="#4CAF50" stroke-width="10" p-id="1654"></path>
+  <path d="M256 556 L768 556" fill="none" stroke="#4CAF50" stroke-width="10" p-id="1655"></path>
+  <path d="M256 656 L768 656" fill="none" stroke="#4CAF50" stroke-width="10" p-id="1656"></path>
+  <circle cx="356" cy="356" r="8" fill="#4CAF50" p-id="1657"></circle>
+  <circle cx="456" cy="356" r="8" fill="#4CAF50" p-id="1658"></circle>
+  <circle cx="556" cy="356" r="8" fill="#4CAF50" p-id="1659"></circle>
+  <circle cx="656" cy="356" r="8" fill="#4CAF50" p-id="1660"></circle>
+  <circle cx="356" cy="456" r="8" fill="#4CAF50" p-id="1661"></circle>
+  <circle cx="456" cy="456" r="8" fill="#4CAF50" p-id="1662"></circle>
+  <circle cx="556" cy="456" r="8" fill="#4CAF50" p-id="1663"></circle>
+  <circle cx="656" cy="456" r="8" fill="#4CAF50" p-id="1664"></circle>
+  <circle cx="356" cy="556" r="8" fill="#4CAF50" p-id="1665"></circle>
+  <circle cx="456" cy="556" r="8" fill="#4CAF50" p-id="1666"></circle>
+  <circle cx="556" cy="556" r="8" fill="#4CAF50" p-id="1667"></circle>
+  <circle cx="656" cy="556" r="8" fill="#4CAF50" p-id="1668"></circle>
+  <circle cx="356" cy="656" r="8" fill="#4CAF50" p-id="1669"></circle>
+  <circle cx="456" cy="656" r="8" fill="#4CAF50" p-id="1670"></circle>
+  <circle cx="556" cy="656" r="8" fill="#4CAF50" p-id="1671"></circle>
+  <circle cx="656" cy="656" r="8" fill="#4CAF50" p-id="1672"></circle>
+</svg> 

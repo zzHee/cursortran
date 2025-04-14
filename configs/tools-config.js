@@ -15,6 +15,13 @@ const toolsConfig = {
         url: "https://auto-coder.chat/en",
         category: "coding"
     },
+    "google-gemini": {
+        title: "Google Gemini",
+        description: "Google推出的多模态AI助手，支持自然语言对话和图像分析",
+        type: "external",
+        url: "https://gemini.google.com/app",
+        category: "ai"
+    },
     "torchv-kb": {
         title: "TorchV KB",
         description: "TorchV 知识库系统，提供智能知识管理和检索服务",

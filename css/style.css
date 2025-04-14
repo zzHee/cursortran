@@ -1,6 +1,8 @@
 /* 通用样式 */
 :root {
+    /* 基本颜色变量 - 绿色主题(默认) */
     --primary-color: #4CAF50;
+    --primary-color-transparent: rgba(76, 175, 80, 0.3);
     --hover-color: #45a049;
     --background-color: #f5f5f5;
     --card-background: white;
@@ -16,6 +18,53 @@
     --coding-category-color: #FF9800;
     --converter-category-color: #00BCD4;
     --other-category-color: #795548;
+    --accent-color: #4CAF50; /* 用于特殊强调 */
+    --accent-gradient-start: #4CAF50;
+    --accent-gradient-end: #2196F3;
+}
+
+/* 蓝色主题 */
+[data-theme="blue"] {
+    --primary-color: #2196F3;
+    --primary-color-transparent: rgba(33, 150, 243, 0.3);
+    --hover-color: #1976D2;
+    --category-active-color: #E3F2FD;
+    --accent-color: #2196F3;
+    --accent-gradient-start: #2196F3;
+    --accent-gradient-end: #673AB7;
+}
+
+/* 紫色主题 */
+[data-theme="purple"] {
+    --primary-color: #9C27B0;
+    --primary-color-transparent: rgba(156, 39, 176, 0.3);
+    --hover-color: #7B1FA2;
+    --category-active-color: #F3E5F5;
+    --accent-color: #9C27B0;
+    --accent-gradient-start: #9C27B0;
+    --accent-gradient-end: #FF5722;
+}
+
+/* 橙色主题 */
+[data-theme="orange"] {
+    --primary-color: #FF9800;
+    --primary-color-transparent: rgba(255, 152, 0, 0.3);
+    --hover-color: #F57C00;
+    --category-active-color: #FFF3E0;
+    --accent-color: #FF9800;
+    --accent-gradient-start: #FF9800;
+    --accent-gradient-end: #F44336;
+}
+
+/* 青色主题 */
+[data-theme="teal"] {
+    --primary-color: #009688;
+    --primary-color-transparent: rgba(0, 150, 136, 0.3);
+    --hover-color: #00796B;
+    --category-active-color: #E0F2F1;
+    --accent-color: #009688;
+    --accent-gradient-start: #009688;
+    --accent-gradient-end: #00BCD4;
 }
 
 /* 全局滚动条样式 */
@@ -560,18 +609,23 @@ button:hover {
         height: 160px;
     }
     
-    /* 小屏幕上的背景控制按钮 */
+    /* 控制面板样式调整 */
     .background-controls {
         bottom: 10px;
         right: 10px;
     }
     
-    .bg-toggle-btn {
+    .theme-controls {
+        bottom: 10px;
+        right: 65px; /* 小屏幕上调整间距 */
+    }
+    
+    .bg-toggle-btn, .theme-toggle-btn {
         width: 35px;
         height: 35px;
     }
     
-    .bg-menu-btn {
+    .bg-menu-btn, .theme-menu-btn {
         width: 40px;
         height: 40px;
     }
@@ -605,6 +659,7 @@ button:hover {
     animation-delay: 0s;
     animation-duration: 25s;
     transform-origin: center center;
+    background: linear-gradient(45deg, var(--accent-gradient-start), var(--accent-gradient-end));
 }
 
 .shape-2 {
@@ -615,7 +670,7 @@ button:hover {
     animation-delay: 5s;
     animation-duration: 30s;
     border-radius: 30%;
-    background: linear-gradient(135deg, var(--converter-category-color), var(--coding-category-color));
+    background: linear-gradient(135deg, var(--accent-gradient-end), var(--accent-gradient-start));
 }
 
 .shape-3 {
@@ -626,7 +681,7 @@ button:hover {
     animation-delay: 7s;
     animation-duration: 35s;
     border-radius: 40% 60% 50% 30%;
-    background: linear-gradient(225deg, var(--text-category-color), var(--external-badge-color));
+    background: linear-gradient(225deg, var(--accent-gradient-start), var(--accent-gradient-end));
 }
 
 .shape-4 {
@@ -637,7 +692,7 @@ button:hover {
     animation-delay: 3s;
     animation-duration: 22s;
     border-radius: 60% 40% 30% 70%;
-    background: linear-gradient(45deg, var(--other-category-color), var(--hover-color));
+    background: linear-gradient(45deg, var(--accent-gradient-end), var(--primary-color));
 }
 
 .shape-5 {
@@ -648,7 +703,7 @@ button:hover {
     animation-delay: 8s;
     animation-duration: 28s;
     border-radius: 30% 50% 60% 40%;
-    background: linear-gradient(315deg, var(--primary-color), var(--text-category-color));
+    background: linear-gradient(315deg, var(--primary-color), var(--accent-gradient-start));
 }
 
 @keyframes floatAnimation {
@@ -853,4 +908,402 @@ button:hover {
     transform: translate(-50%, -50%);
 }
 
-/* 根据当前选中的背景类型显示对应图标 */ 
+/* 根据当前选中的背景类型显示对应图标 */
+
+/* 星空背景 */
+.starry-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.7;
+    overflow: hidden;
+    display: none; /* 默认隐藏，通过JS控制显示 */
+    background-color: #121726; /* 深蓝色背景 */
+    transition: background-color 0.5s ease;
+}
+
+[data-theme="blue"] .starry-background {
+    background-color: #0a1929;
+}
+
+[data-theme="purple"] .starry-background {
+    background-color: #1a0029;
+}
+
+[data-theme="orange"] .starry-background {
+    background-color: #291200;
+}
+
+[data-theme="teal"] .starry-background {
+    background-color: #002e2a;
+}
+
+.starry-canvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.starry-background.active {
+    display: block;
+}
+
+/* 添加星空背景按钮的图标 */
+.bg-toggle-btn[data-bg="starry"]::before {
+    background-image: url('../resource/background_type_starry.svg');
+}
+
+/* 默认隐藏所有背景，通过JS控制显示 */
+.geometric-background {
+    display: none;
+}
+
+/* 默认背景激活 */
+.geometric-background.active {
+    display: block;
+}
+
+.wave-background.active {
+    display: block;
+}
+
+/* 网格背景 */
+.grid-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.6;
+    overflow: hidden;
+    display: none; /* 默认隐藏，通过JS控制显示 */
+    background-color: #fafafa; /* 浅灰白色背景 */
+}
+
+.grid-canvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.grid-background.active {
+    display: block;
+}
+
+/* 添加网格背景按钮的图标 */
+.bg-toggle-btn[data-bg="grid"]::before {
+    background-image: url('../resource/background_type_grid.svg');
+    content: '';
+    width: 24px;
+    height: 24px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: block;
+}
+
+.bg-menu-btn::before {
+    content: '';
+    width: 10px;
+}
+
+/* 粒子漩涡背景 */
+.vortex-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.7;
+    overflow: hidden;
+    display: none; /* 默认隐藏，通过JS控制显示 */
+    background-color: #000a12; /* 深色背景 */
+}
+
+.vortex-canvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.vortex-background.active {
+    display: block;
+}
+
+/* 添加漩涡背景按钮的图标 */
+.bg-toggle-btn[data-bg="vortex"]::before {
+    background-image: url('../resource/background_type_vortex.svg');
+    content: '';
+    width: 24px;
+    height: 24px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: block;
+}
+
+.bg-menu-btn::before {
+    content: '';
+    width: 10px;
+}
+
+/* 主题切换控制 */
+.theme-controls {
+    position: fixed;
+    bottom: 20px;
+    right: 80px; /* 右侧位置，留出空间给背景切换按钮 */
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 10px;
+    z-index: 100;
+    transition: all 0.3s ease;
+}
+
+.theme-toggle-btn {
+    background-color: rgba(255, 255, 255, 0.8);
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: translateY(20px) scale(0.8);
+    pointer-events: none;
+    padding: 0;
+}
+
+.theme-toggle-btn:hover {
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    transform: scale(1.1);
+}
+
+.theme-toggle-btn.active {
+    background-color: var(--primary-color);
+}
+
+.theme-menu-btn {
+    background-color: var(--primary-color);
+    color: white;
+    width: 46px;
+    height: 46px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 101;
+    position: relative;
+    order: -1; /* 确保菜单按钮始终显示在最前面 */
+}
+
+.theme-menu-btn::before {
+    content: '';
+    width: 26px;
+    height: 26px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9c.83 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1.01-.23-.26-.38-.61-.38-.99 0-.83.67-1.5 1.5-1.5H16c2.76 0 5-2.24 5-5 0-4.42-4.03-8-9-8zm-5.5 9c-.83 0-1.5-.67-1.5-1.5S5.67 9 6.5 9 8 9.67 8 10.5 7.33 12 6.5 12zm3-4C8.67 8 8 7.33 8 6.5S8.67 5 9.5 5s1.5.67 1.5 1.5S10.33 8 9.5 8zm5 0c-.83 0-1.5-.67-1.5-1.5S13.67 5 14.5 5s1.5.67 1.5 1.5S15.33 8 14.5 8zm3 4c-.83 0-1.5-.67-1.5-1.5S16.67 9 17.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: block;
+}
+
+.theme-menu-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.theme-controls:hover .theme-toggle-btn {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+}
+
+/* 设置不同主题按钮的颜色 */
+.theme-toggle-btn[data-theme="green"] {
+    background-color: #4CAF50;
+}
+
+.theme-toggle-btn[data-theme="blue"] {
+    background-color: #2196F3;
+}
+
+.theme-toggle-btn[data-theme="purple"] {
+    background-color: #9C27B0;
+}
+
+.theme-toggle-btn[data-theme="orange"] {
+    background-color: #FF9800;
+}
+
+.theme-toggle-btn[data-theme="teal"] {
+    background-color: #009688;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .theme-controls {
+        bottom: 10px;
+        right: 65px; /* 在小屏幕上也调整为右侧 */
+    }
+    
+    .theme-toggle-btn {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .theme-menu-btn {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+/* 泡泡背景 */
+.bubble-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0;
+    overflow: hidden;
+    display: none; /* 默认隐藏，通过JS控制显示 */
+    background-color: rgba(240, 248, 255, 0.8); /* 浅蓝色背景 */
+    transition: opacity 0.5s ease;
+}
+
+.bubble-canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.bubble-background.active {
+    display: block;
+    opacity: 1;
+}
+
+.bg-toggle-btn[data-bg="bubble"]::before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255,255,255,0.9) 0%, rgba(173,216,230,0.8) 50%, rgba(135,206,235,0.7) 100%);
+    border: 2px solid #87CEEB;
+    border-radius: 50%;
+    box-shadow: 0 0 8px rgba(135,206,235,0.7);
+    display: block;
+}
+
+/* 渐变背景 */
+.gradient-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0;
+    overflow: hidden;
+    display: none; /* 默认隐藏，通过JS控制显示 */
+    background-color: #f8f9fa; /* 浅灰色背景 */
+    transition: opacity 0.8s ease;
+}
+
+.gradient-canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.gradient-background.active {
+    display: block;
+    opacity: 1;
+}
+
+.bg-toggle-btn[data-bg="gradient"]::before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, var(--primary-color-transparent) 100%);
+    border: 2px solid rgba(255,255,255,0.6);
+    border-radius: 50%;
+    box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    display: block;
+}
+
+/* 纸浮雕背景 */
+.paper-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0;
+    overflow: hidden;
+    display: none; /* 默认隐藏，通过JS控制显示 */
+    background-color: #f9f9f9; /* 浅灰色纸张底色 */
+    transition: opacity 0.8s ease;
+}
+
+.paper-canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.paper-background.active {
+    display: block;
+    opacity: 1;
+}
+
+.bg-toggle-btn[data-bg="paper"]::before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #f5f5f5 30%, #e0e0e0 100%);
+    border: 2px solid #f0f0f0;
+    border-radius: 50%;
+    box-shadow: inset 2px 2px 5px rgba(0,0,0,0.05), inset -2px -2px 5px rgba(255,255,255,0.8);
+    display: block;
+}
+
+/* 控制面板容器 - 用于在小屏幕上组合两个控制面板 */
+@media (max-width: 768px) {
+    /* 调整背景控制面板在小屏幕上的位置 */
+    .background-controls {
+        bottom: 10px;
+        right: 10px;
+    }
+    
+    /* 调整主题控制面板在小屏幕上的位置 */
+    .theme-controls {
+        bottom: 10px;
+        right: 65px; /* 小屏幕上调整间距 */
+    }
+    
+    .bg-toggle-btn, .theme-toggle-btn {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .bg-menu-btn, .theme-menu-btn {
+        width: 40px;
+        height: 40px;
+    }
+} 
